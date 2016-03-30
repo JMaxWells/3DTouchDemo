@@ -18,7 +18,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.alpha = 1.0f;
@@ -27,7 +26,7 @@
     ViewController *vc = [ViewController  new];
     
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-    UIBarButtonItem * leftItem= nvc.navigationItem.backBarButtonItem;
+    UIBarButtonItem *leftItem = nvc.navigationItem.backBarButtonItem;
     [leftItem setTitle:nil];
     [nvc.navigationBar setBackgroundColor:[UIColor whiteColor]];
     [nvc.navigationBar setTintColor:[UIColor blackColor]];
@@ -38,8 +37,8 @@
     [nvc.navigationBar.superview addSubview:fpsLabel];
     
     [fpsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-10);
-        make.size.mas_equalTo(CGSizeMake(60, 30));
+        make.right.mas_equalTo(-5);
+        make.size.mas_equalTo(CGSizeMake(30, 20));
         make.top.mas_equalTo(64);
     }];
     
@@ -85,7 +84,6 @@
 }
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
-    
     // react to shortcut item selections
     NSLog(@"A shortcut item was pressed. It was %@.", shortcutItem.localizedTitle);
     

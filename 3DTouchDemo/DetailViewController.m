@@ -7,10 +7,12 @@
 //
 
 #import "DetailViewController.h"
-#import <objc/runtime.h>
-
+#import <Masonry.h>
+#import <YYTextView.h>
 
 @interface DetailViewController ()
+
+@property (nonatomic ,strong) YYTextView *textView;
 
 @end
 
@@ -18,8 +20,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.textView = [YYTextView new];
+    self.textView.font = [UIFont systemFontOfSize:15.0f];
+    self.textView.textColor = [UIColor blackColor];
+    [self.view addSubview:self.textView];
+    
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+    }];
+    
+    self.textView.text = self.title;
+    
+    self.title = @"详情";
 }
-
 
 @end

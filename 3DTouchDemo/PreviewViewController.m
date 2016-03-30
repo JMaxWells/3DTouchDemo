@@ -40,7 +40,6 @@ static char overviewKey;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.fd_debugLogEnabled = YES;
 
-    
     self.titleArray = @[@"其实，iOS8已经提供了直接通过XIB让Cell高度自适应的方法了，只要简单拖拖线，根本木有必要计算Cell高度，就可以搞定不等高Cell",@"想知道妹纸爱你有多深？知道这个干嘛，直接通过iOS8，让妹纸爱上你不就好啦~",@"ummmm就不给效果图了哦，和上一张是一样一样的~",@"通常情况下，Cell之所以不等高，是因为Cell内部文字区域的高度会根据文字数量动态变化，图片区域的高度会根据图片数量而自动变化。也就是说，只要知道文字区域的高度、图片区域的高度，就可以硬生生计算出Cell的高度了。",@"嗯！Cell也是一样的，想知道cell到底有多高？直接问Cell本人就好了。直接法，就是把数据布局到Cell上，然后拿到Cell最底部控件的MaxY值。",@"第二步：再给这个Cell添加点别的东东，就叫这个东东BottomCub了。为Cub添加好约束。",@"第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法",@"第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法",@"第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法",@"第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法第三步：为这个Cell写一个返回Cell高度 - 也就是BottomCub最大Y值的方法",@"11",@"eqweqwe",@"课题二：在哪计算Cell高度"];
 }
 #pragma mark - UITableViewDataSource & UITableViewDelegate
@@ -73,7 +72,6 @@ static char overviewKey;
     }];
 }
 
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return [UIView new];
 }
@@ -94,14 +92,13 @@ static char overviewKey;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     DetailViewController *detailView = [[DetailViewController alloc] init];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    detailView.title = cell.textLabel.text;
+    TestTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    detailView.title = cell.txtLabel.text;
     
     [self.navigationController pushViewController:detailView animated:YES];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         NSNumber *number = (NSNumber *)objc_getAssociatedObject(alertView,&overviewKey);
         NSLog(@"number is %@",number);
@@ -111,7 +108,6 @@ static char overviewKey;
 # pragma mark - 3D Touch Delegate
 
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    
     // check if we're not already displaying a preview controller
     /**
      *  防止重复跳转
@@ -129,8 +125,8 @@ static char overviewKey;
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     DetailViewController *detailView = [[DetailViewController alloc] init];
     
-    UITableViewCell *cell = (UITableViewCell* )[previewingContext sourceView];
-    detailView.title = cell.textLabel.text;
+    TestTableViewCell *cell = (TestTableViewCell* )[previewingContext sourceView];
+    detailView.title = cell.txtLabel.text;
     
     [self showViewController:detailView sender:self];
 }

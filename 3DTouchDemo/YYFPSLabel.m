@@ -33,9 +33,9 @@
     self.userInteractionEnabled = NO;
     self.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.700];
     
-    _font = [UIFont fontWithName:@"Menlo" size:14];
+    _font = [UIFont fontWithName:@"Menlo" size:8];
     if (_font) {
-        _subFont = [UIFont fontWithName:@"Menlo" size:4];
+        _subFont = [UIFont fontWithName:@"Menlo" size:8];
     } else {
         _font = [UIFont fontWithName:@"Courier" size:14];
         _subFont = [UIFont fontWithName:@"Courier" size:4];

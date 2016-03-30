@@ -1,5 +1,4 @@
 PODS:
-  - BabyBluetooth (0.5.0)
   - Masonry (0.6.4)
   - UITableView+FDTemplateLayoutCell (1.5.beta)
   - YYKit (1.0.3):
@@ -7,13 +6,11 @@ PODS:
   - YYKit/no-arc (1.0.3)
 
 DEPENDENCIES:
-  - BabyBluetooth (~> 0.5.0)
   - Masonry (~> 0.6.4)
   - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
   - YYKit (~> 1.0.3)
 
 SPEC CHECKSUMS:
-  BabyBluetooth: dae3d3edc48d13939deebd457bb57d35f64dae19
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   UITableView+FDTemplateLayoutCell: 02b508ab1cb4cea16a8c17ac83d2cd1fd72124f9
   YYKit: fa66d61240458f14562c33c85c91d11131e43261

@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BabyBluetooth.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,22 +32,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53DE7F1037C06F24A9DF419B9090F28C</key>
+		<key>56DFCCF49B7D6712A60625457D2608C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>598E9E278D18CBE59CFBA124F5DD73E6</key>
+		<key>90F6839BE3C1B73DA48DA4FB1C266FF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6340CCAA0FB2D13B1D0E0FDF3EBE6ED0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>81EAFA09AE9A7884EC6C76C726CCF0EC</key>
+		<key>AEADDA5E88AC61868012B718BB6E0D8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

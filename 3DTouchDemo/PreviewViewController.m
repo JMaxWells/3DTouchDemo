@@ -125,7 +125,8 @@ static char overviewKey;
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     DetailViewController *detailView = [[DetailViewController alloc] init];
     
-    TestTableViewCell *cell = (TestTableViewCell* )[previewingContext sourceView];
+    TestTableViewCell *cell = (TestTableViewCell
+                               * )[previewingContext sourceView];
     detailView.title = cell.txtLabel.text;
     
     [self showViewController:detailView sender:self];

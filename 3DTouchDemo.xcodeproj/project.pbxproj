@@ -87,13 +87,13 @@
 				67AE627F1C7AA9E300AE3DC0 /* PreviewViewController.m */,
 				6754DA701CA916180019EEC3 /* DetailViewController.h */,
 				6754DA711CA916180019EEC3 /* DetailViewController.m */,
+				672652491CABAD3400920345 /* TestTableViewCell.h */,
+				6726524A1CABAD3400920345 /* TestTableViewCell.m */,
 				67AE62701C7AA46700AE3DC0 /* Main.storyboard */,
 				67AE62731C7AA46700AE3DC0 /* Assets.xcassets */,
 				67AE62751C7AA46700AE3DC0 /* LaunchScreen.storyboard */,
 				67AE62781C7AA46700AE3DC0 /* Info.plist */,
 				67AE62671C7AA46700AE3DC0 /* Supporting Files */,
-				672652491CABAD3400920345 /* TestTableViewCell.h */,
-				6726524A1CABAD3400920345 /* TestTableViewCell.m */,
 			);
 			path = 3DTouchDemo;
 			sourceTree = "<group>";

@@ -1,5 +1,6 @@
 PODS:
   - Masonry (0.6.4)
+  - MMPlaceHolder (1.9)
   - UITableView+FDTemplateLayoutCell (1.5.beta)
   - YYKit (1.0.3):
     - YYKit/no-arc (= 1.0.3)
@@ -7,11 +8,13 @@ PODS:
 
 DEPENDENCIES:
   - Masonry (~> 0.6.4)
+  - MMPlaceHolder (~> 1.9)
   - UITableView+FDTemplateLayoutCell (~> 1.5.beta)
   - YYKit (~> 1.0.3)
 
 SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MMPlaceHolder: 40212b9dfe8760134b1b2fce3232f0d46200178f
   UITableView+FDTemplateLayoutCell: 02b508ab1cb4cea16a8c17ac83d2cd1fd72124f9
   YYKit: fa66d61240458f14562c33c85c91d11131e43261
 

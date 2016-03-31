@@ -12,11 +12,13 @@
 		678538631CABCA7900EF2350 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 678538621CABCA7900EF2350 /* YYFPSLabel.m */; };
 		67AE62691C7AA46700AE3DC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AE62681C7AA46700AE3DC0 /* main.m */; };
 		67AE626C1C7AA46700AE3DC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AE626B1C7AA46700AE3DC0 /* AppDelegate.m */; };
-		67AE626F1C7AA46700AE3DC0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AE626E1C7AA46700AE3DC0 /* ViewController.m */; };
+		67AE626F1C7AA46700AE3DC0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AE626E1C7AA46700AE3DC0 /* RootViewController.m */; };
 		67AE62721C7AA46700AE3DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67AE62701C7AA46700AE3DC0 /* Main.storyboard */; };
 		67AE62741C7AA46700AE3DC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AE62731C7AA46700AE3DC0 /* Assets.xcassets */; };
 		67AE62771C7AA46700AE3DC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67AE62751C7AA46700AE3DC0 /* LaunchScreen.storyboard */; };
 		67AE62801C7AA9E300AE3DC0 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AE627F1C7AA9E300AE3DC0 /* PreviewViewController.m */; };
+		67F5401B1CACC683006A6D06 /* UIViewController+WMBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F5401A1CACC683006A6D06 /* UIViewController+WMBase.m */; };
+		67F5401E1CACC88D006A6D06 /* LKGlobalNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F5401D1CACC88D006A6D06 /* LKGlobalNavigationController.m */; };
 		7D4993E78B2019A139542423 /* libPods-3DTouchDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07840D8C06C6BED80DC19CD1 /* libPods-3DTouchDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -33,14 +35,19 @@
 		67AE62681C7AA46700AE3DC0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67AE626A1C7AA46700AE3DC0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		67AE626B1C7AA46700AE3DC0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		67AE626D1C7AA46700AE3DC0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		67AE626E1C7AA46700AE3DC0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		67AE626D1C7AA46700AE3DC0 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		67AE626E1C7AA46700AE3DC0 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		67AE62711C7AA46700AE3DC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		67AE62731C7AA46700AE3DC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67AE62761C7AA46700AE3DC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67AE62781C7AA46700AE3DC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67AE627E1C7AA9E300AE3DC0 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		67AE627F1C7AA9E300AE3DC0 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		67F540191CACC683006A6D06 /* UIViewController+WMBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WMBase.h"; sourceTree = "<group>"; };
+		67F5401A1CACC683006A6D06 /* UIViewController+WMBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WMBase.m"; sourceTree = "<group>"; };
+		67F5401C1CACC88D006A6D06 /* LKGlobalNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKGlobalNavigationController.h; sourceTree = "<group>"; };
+		67F5401D1CACC88D006A6D06 /* LKGlobalNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKGlobalNavigationController.m; sourceTree = "<group>"; };
+		67F5401F1CACC8C0006A6D06 /* LKSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKSingleton.h; sourceTree = "<group>"; };
 		6DD55D4F7C45765D311B2E1A /* Pods-3DTouchDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-3DTouchDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-3DTouchDemo/Pods-3DTouchDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,12 +84,17 @@
 		67AE62661C7AA46700AE3DC0 /* 3DTouchDemo */ = {
 			isa = PBXGroup;
 			children = (
+				67F5401F1CACC8C0006A6D06 /* LKSingleton.h */,
+				67F5401C1CACC88D006A6D06 /* LKGlobalNavigationController.h */,
+				67F5401D1CACC88D006A6D06 /* LKGlobalNavigationController.m */,
+				67F540191CACC683006A6D06 /* UIViewController+WMBase.h */,
+				67F5401A1CACC683006A6D06 /* UIViewController+WMBase.m */,
 				678538611CABCA7900EF2350 /* YYFPSLabel.h */,
 				678538621CABCA7900EF2350 /* YYFPSLabel.m */,
 				67AE626A1C7AA46700AE3DC0 /* AppDelegate.h */,
 				67AE626B1C7AA46700AE3DC0 /* AppDelegate.m */,
-				67AE626D1C7AA46700AE3DC0 /* ViewController.h */,
-				67AE626E1C7AA46700AE3DC0 /* ViewController.m */,
+				67AE626D1C7AA46700AE3DC0 /* RootViewController.h */,
+				67AE626E1C7AA46700AE3DC0 /* RootViewController.m */,
 				67AE627E1C7AA9E300AE3DC0 /* PreviewViewController.h */,
 				67AE627F1C7AA9E300AE3DC0 /* PreviewViewController.m */,
 				6754DA701CA916180019EEC3 /* DetailViewController.h */,
@@ -245,9 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				678538631CABCA7900EF2350 /* YYFPSLabel.m in Sources */,
+				67F5401E1CACC88D006A6D06 /* LKGlobalNavigationController.m in Sources */,
 				6754DA721CA916180019EEC3 /* DetailViewController.m in Sources */,
 				6726524B1CABAD3400920345 /* TestTableViewCell.m in Sources */,
-				67AE626F1C7AA46700AE3DC0 /* ViewController.m in Sources */,
+				67F5401B1CACC683006A6D06 /* UIViewController+WMBase.m in Sources */,
+				67AE626F1C7AA46700AE3DC0 /* RootViewController.m in Sources */,
 				67AE626C1C7AA46700AE3DC0 /* AppDelegate.m in Sources */,
 				67AE62691C7AA46700AE3DC0 /* main.m in Sources */,
 				67AE62801C7AA9E300AE3DC0 /* PreviewViewController.m in Sources */,

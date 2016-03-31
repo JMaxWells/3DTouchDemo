@@ -1,9 +1,20 @@
 # 3DTouchDemo
+
 * 1.3D Touch
 
 * 2.FDTemplateLayoutCell
 
 * 3.Peek And Pop
+
+* 4.LKGlobalNavigationController
+
+* 5.UIViewController+WMBase
+
+## LKGlobalNavigationController
+自定义导航栏，可以直接用URL进行跳转到新页面。
+
+## UIViewController+WMBase
+使用runtime动态添加属性，在LKGlobalNavigationController跳转到新页面的同时可以传参数。
 
 ## 扩展
 

@@ -1,19 +1,24 @@
 //
-//  ViewController.m
+//  RootViewController.m
 //  3DTouchDemo
 //
 //  Created by MaxWellPro on 16/2/22.
 //  Copyright © 2016年 MaxWellPro. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "RootViewController.h"
 #import "PreviewViewController.h"
+#import "LKGlobalNavigationController.h"
 
-@interface ViewController ()<UIViewControllerPreviewingDelegate>
+@interface RootViewController ()<UIViewControllerPreviewingDelegate>
 
 @end
 
-@implementation ViewController
+@implementation RootViewController
+
++ (void)load {
+    [LKGlobalNavigationController registerURLPattern:@"3DTouch://rootview" viewControllerClass:[self class]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +73,6 @@
 }
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    
     PreviewViewController *previewController = [PreviewViewController new];
     [self showViewController:previewController sender:self];
     

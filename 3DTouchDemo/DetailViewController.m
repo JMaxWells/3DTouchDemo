@@ -9,6 +9,8 @@
 #import "DetailViewController.h"
 #import <Masonry.h>
 #import <YYTextView.h>
+#import "LKGlobalNavigationController.h"
+#import "UIViewController+WMBase.h"
 
 @interface DetailViewController ()
 
@@ -18,8 +20,13 @@
 
 @implementation DetailViewController
 
++ (void)load {
+    [LKGlobalNavigationController registerURLPattern:@"3DTouch://detailview" viewControllerClass:[self class]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"详情";
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.textView = [YYTextView new];
@@ -34,9 +41,9 @@
         make.right.mas_equalTo(0);
     }];
     
-    self.textView.text = self.title;
-    
-    self.title = @"详情";
+    if (self.params) {
+        self.textView.text = [self.params valueForKey:@"params"];;
+    }
 }
 
 @end

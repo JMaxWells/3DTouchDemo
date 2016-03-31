@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  3DTouchDemo
 //
 //  Created by MaxWellPro on 16/2/22.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface RootViewController : UIViewController
 
 
 @end

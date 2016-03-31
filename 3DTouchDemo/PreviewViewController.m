@@ -20,7 +20,6 @@ static char overviewKey;
 
 @property (nonatomic ,strong) UITableView *tableView;
 @property (nonatomic ,strong) NSArray *titleArray;
-@property (nonatomic ,strong) NSMutableArray *feedEntities;
 
 @end
 

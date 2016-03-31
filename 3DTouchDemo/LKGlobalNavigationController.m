@@ -10,7 +10,7 @@
 
 static NSString * const LK_ROUTER_WILDCARD_CHARACTER = @"~";
 
-NSString *const LKGlobalParameterURL        = @"LKGlobalParameterURL";
+NSString *const LKGlobalParameterURL = @"LKGlobalParameterURL";
 
 @interface LKGlobalNavigationController ()
 
@@ -34,13 +34,13 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
 }
 
 + (void)registerURLPattern:(NSString *)URLPattern viewControllerClass:(Class)cls {
-    [((LKGlobalNavigationController*)[self sharedInstance]).registerViewControllerCls setObject:cls forKey:URLPattern];
+    [((LKGlobalNavigationController *)[self sharedInstance]).registerViewControllerCls setObject:cls forKey:URLPattern];
 }
 
 + (UIViewController *) findAnExistViewControllerWithURLPattern:(NSString *)URLPattern{
-    for (NSInteger i=[LKGlobalNavigationController sharedInstance].viewControllers.count; i>0; i--) {
-        UIViewController * v=[[LKGlobalNavigationController sharedInstance].viewControllers objectAtIndex:(i-1)];
-        Class vClass=[LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern];
+    for (NSInteger i = [LKGlobalNavigationController sharedInstance].viewControllers.count; i > 0; i--) {
+        UIViewController *v = [[LKGlobalNavigationController sharedInstance].viewControllers objectAtIndex:(i - 1)];
+        Class vClass = [LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern];
         if ([v isKindOfClass:vClass]) {
             return v;
         }
@@ -48,9 +48,8 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
     return nil;
 }
 
-+ (Class) findViewControllerClassWithURLPattern:(NSString *)URLPattern
-{
-  return [((LKGlobalNavigationController*)[self sharedInstance]).registerViewControllerCls valueForKey:URLPattern];
++ (Class) findViewControllerClassWithURLPattern:(NSString *)URLPattern {
+  return [((LKGlobalNavigationController *)[self sharedInstance]).registerViewControllerCls valueForKey:URLPattern];
 }
 
 + (void)deregisterURLPattern:(NSString *)URLPattern {
@@ -60,16 +59,16 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
 #pragma mark - Utils
 
 - (NSMutableDictionary *)extractParametersFromURL:(NSString *)url {
-    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     parameters[LKGlobalParameterURL] = url;
     
-    NSMutableDictionary* subRoutes = self.routes;
-    NSArray* pathComponents = [self pathComponentsFromURL:url];
+    NSMutableDictionary *subRoutes = self.routes;
+    NSArray *pathComponents = [self pathComponentsFromURL:url];
     
     // borrowed from HHRouter(https://github.com/Huohua/HHRouter)
     
-    for (NSString* pathComponent in pathComponents) {
+    for (NSString *pathComponent in pathComponents) {
         BOOL found = NO;
         
         // 对 key 进行排序，这样可以把 ~ 放到最后
@@ -77,7 +76,7 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
             return [obj1 compare:obj2];
         }];
         
-        for (NSString* key in subRoutesKeys) {
+        for (NSString *key in subRoutesKeys) {
             if ([key isEqualToString:pathComponent] || [key isEqualToString:LK_ROUTER_WILDCARD_CHARACTER]) {
                 found = YES;
                 subRoutes = subRoutes[key];
@@ -95,15 +94,15 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
         }
     }
     // Extract Params From Query.
-    NSArray* pathInfo = [url componentsSeparatedByString:@"?"];
+    NSArray *pathInfo = [url componentsSeparatedByString:@"?"];
     if (pathInfo.count > 1) {
-        NSString* parametersString = [pathInfo objectAtIndex:1];
-        NSArray* paramStringArr = [parametersString componentsSeparatedByString:@"&"];
-        for (NSString* paramString in paramStringArr) {
-            NSArray* paramArr = [paramString componentsSeparatedByString:@"="];
+        NSString *parametersString = [pathInfo objectAtIndex:1];
+        NSArray *paramStringArr = [parametersString componentsSeparatedByString:@"&"];
+        for (NSString *paramString in paramStringArr) {
+            NSArray *paramArr = [paramString componentsSeparatedByString:@"="];
             if (paramArr.count > 1) {
-                NSString* key = [paramArr objectAtIndex:0];
-                NSString* value = [paramArr objectAtIndex:1];
+                NSString *key = [paramArr objectAtIndex:0];
+                NSString *value = [paramArr objectAtIndex:1];
                 parameters[key] = value;
             }
         }
@@ -120,10 +119,10 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
     NSArray *pathComponents = [self pathComponentsFromURL:URLPattern];
     
     NSInteger index = 0;
-    NSMutableDictionary* subRoutes = self.routes;
+    NSMutableDictionary *subRoutes = self.routes;
     
     while (index < pathComponents.count) {
-        NSString* pathComponent = pathComponents[index];
+        NSString *pathComponent = pathComponents[index];
         if (![subRoutes objectForKey:pathComponent]) {
             subRoutes[pathComponent] = [[NSMutableDictionary alloc] init];
         }
@@ -159,7 +158,7 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
     }
 }
 
-- (NSArray*)pathComponentsFromURL:(NSString*)URL {
+- (NSArray *)pathComponentsFromURL:(NSString *)URL {
     NSMutableArray *pathComponents = [NSMutableArray array];
     if ([URL rangeOfString:@"://"].location != NSNotFound) {
         NSArray *pathSegments = [URL componentsSeparatedByString:@"://"];
@@ -181,11 +180,9 @@ IMPLEMENT_SINGLETON(LKGlobalNavigationController)
     return [pathComponents copy];
 }
 
-
--(LKGlobalNavigationController*) init {
+- (LKGlobalNavigationController*) init {
     self.registerViewControllerCls = [[NSMutableDictionary alloc] initWithCapacity:10];
     return [super init];
 }
-
 
 @end

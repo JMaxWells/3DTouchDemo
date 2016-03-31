@@ -32,7 +32,7 @@
     return self;
 }
 
--(void)setEntity:(NSString *)entity {
+- (void)setEntity:(NSString *)entity {
     self.txtLabel.text = entity;
 }
 

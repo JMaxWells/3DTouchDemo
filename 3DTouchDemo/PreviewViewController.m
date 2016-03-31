@@ -71,8 +71,7 @@ static char overviewKey;
     return [UIView new];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [tableView fd_heightForCellWithIdentifier:@"TestTableViewCell" cacheByIndexPath:indexPath configuration:^(TestTableViewCell *cell) {
         cell.fd_enforceFrameLayout = NO; // Enable to use "-sizeThatFits:"
         cell.entity = self.titleArray[indexPath.row%10];

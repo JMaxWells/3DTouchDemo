@@ -84,23 +84,11 @@
 		67AE62661C7AA46700AE3DC0 /* 3DTouchDemo */ = {
 			isa = PBXGroup;
 			children = (
-				67F5401F1CACC8C0006A6D06 /* LKSingleton.h */,
-				67F5401C1CACC88D006A6D06 /* LKGlobalNavigationController.h */,
-				67F5401D1CACC88D006A6D06 /* LKGlobalNavigationController.m */,
-				67F540191CACC683006A6D06 /* UIViewController+WMBase.h */,
-				67F5401A1CACC683006A6D06 /* UIViewController+WMBase.m */,
-				678538611CABCA7900EF2350 /* YYFPSLabel.h */,
-				678538621CABCA7900EF2350 /* YYFPSLabel.m */,
+				67F540221CACD476006A6D06 /* View */,
+				67F540211CACD457006A6D06 /* Controllers */,
+				67F540201CACD43E006A6D06 /* Vendor */,
 				67AE626A1C7AA46700AE3DC0 /* AppDelegate.h */,
 				67AE626B1C7AA46700AE3DC0 /* AppDelegate.m */,
-				67AE626D1C7AA46700AE3DC0 /* RootViewController.h */,
-				67AE626E1C7AA46700AE3DC0 /* RootViewController.m */,
-				67AE627E1C7AA9E300AE3DC0 /* PreviewViewController.h */,
-				67AE627F1C7AA9E300AE3DC0 /* PreviewViewController.m */,
-				6754DA701CA916180019EEC3 /* DetailViewController.h */,
-				6754DA711CA916180019EEC3 /* DetailViewController.m */,
-				672652491CABAD3400920345 /* TestTableViewCell.h */,
-				6726524A1CABAD3400920345 /* TestTableViewCell.m */,
 				67AE62701C7AA46700AE3DC0 /* Main.storyboard */,
 				67AE62731C7AA46700AE3DC0 /* Assets.xcassets */,
 				67AE62751C7AA46700AE3DC0 /* LaunchScreen.storyboard */,
@@ -116,6 +104,42 @@
 				67AE62681C7AA46700AE3DC0 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		67F540201CACD43E006A6D06 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				67F540191CACC683006A6D06 /* UIViewController+WMBase.h */,
+				67F5401A1CACC683006A6D06 /* UIViewController+WMBase.m */,
+				678538611CABCA7900EF2350 /* YYFPSLabel.h */,
+				678538621CABCA7900EF2350 /* YYFPSLabel.m */,
+				67F5401F1CACC8C0006A6D06 /* LKSingleton.h */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		67F540211CACD457006A6D06 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				67F5401C1CACC88D006A6D06 /* LKGlobalNavigationController.h */,
+				67F5401D1CACC88D006A6D06 /* LKGlobalNavigationController.m */,
+				67AE626D1C7AA46700AE3DC0 /* RootViewController.h */,
+				67AE626E1C7AA46700AE3DC0 /* RootViewController.m */,
+				67AE627E1C7AA9E300AE3DC0 /* PreviewViewController.h */,
+				67AE627F1C7AA9E300AE3DC0 /* PreviewViewController.m */,
+				6754DA701CA916180019EEC3 /* DetailViewController.h */,
+				6754DA711CA916180019EEC3 /* DetailViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		67F540221CACD476006A6D06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				672652491CABAD3400920345 /* TestTableViewCell.h */,
+				6726524A1CABAD3400920345 /* TestTableViewCell.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		DD8737F28750726E41D20D46 /* Frameworks */ = {

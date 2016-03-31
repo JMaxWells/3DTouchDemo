@@ -16,12 +16,11 @@ typedef void (^completeBlock)(id result);
 /**
  *  外部传入的参数
  */
-@property (nonatomic,strong)id params;
+@property (nonatomic, strong) id params;
 /**
  *  外部传入的block参数
  */
 @property (nonatomic, copy) completeBlock completeBlock;
-
 
 /**
  *  根据参数创建视图

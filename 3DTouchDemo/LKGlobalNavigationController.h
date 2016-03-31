@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "LKSingleton.h"
-#define URL_TEST1  @"lark://url_test"
-//#define URL_ACTIVITY_VIEWCONTROLLER @"lark://activity"
 
 extern NSString *const LKGlobalParameterURL;
 
@@ -41,9 +39,9 @@ DECLARE_SINGLETON(LKGlobalNavigationController)
  *
  *  @return Viewcontroller的Class
  */
-+ (Class) findViewControllerClassWithURLPattern:(NSString *)URLPattern;
++ (Class)findViewControllerClassWithURLPattern:(NSString *)URLPattern;
 
-+ (UIViewController *) findAnExistViewControllerWithURLPattern:(NSString *)URLPattern;
++ (UIViewController *)findAnExistViewControllerWithURLPattern:(NSString *)URLPattern;
 
 /**
  *  取消注册某个 URL Pattern

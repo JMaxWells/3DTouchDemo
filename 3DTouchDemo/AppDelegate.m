@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 
-
 @interface AppDelegate ()
 
 @end
@@ -54,10 +53,7 @@
 # pragma mark - Springboard Shortcut Items
 
 - (void)createItemsWithIcons {
-    // icons with my own images
-    /**
-     *  icon大小35*35
-     */
+    // icons with my own images,icon size 35*35
     UIApplicationShortcutIcon *icon1 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeFavorite];
     UIApplicationShortcutIcon *icon2 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeSearch];
     UIApplicationShortcutIcon *icon3 = [UIApplicationShortcutIcon iconWithTemplateImageName:@"touch_qrcode"];

@@ -12,8 +12,8 @@ static char overviewKey;
 
 @interface PreviewViewController ()<UIAlertViewDelegate,UITableViewDelegate,UITableViewDataSource,UIViewControllerPreviewingDelegate>
 
-@property (nonatomic ,strong) UITableView *tableView;
-@property (nonatomic ,strong) NSArray *titleArray;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *titleArray;
 
 @end
 
@@ -104,11 +104,8 @@ static char overviewKey;
 
 # pragma mark - 3D Touch Delegate
 
+// check if we're not already displaying a preview controller
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    // check if we're not already displaying a preview controller
-    /**
-     *  防止重复跳转
-     */
     if ([self.presentedViewController isKindOfClass:[DetailViewController class]]) {
         return nil;
     }
@@ -129,8 +126,8 @@ static char overviewKey;
 
 #pragma mark - Preview Actions
 
+// setup a list of preview actions
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
-    // setup a list of preview actions
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"保存" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"test" message:@"msg" delegate:self cancelButtonTitle:@"no" otherButtonTitles:@"yes", nil];
         objc_setAssociatedObject(alert,&overviewKey,@1,OBJC_ASSOCIATION_RETAIN);

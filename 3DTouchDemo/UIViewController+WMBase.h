@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LKGlobalNavigationController.h"
 
 typedef void (^completeBlock)(id result);
 
@@ -27,6 +26,12 @@ typedef void (^completeBlock)(id result);
  */
 - (id)initWithParams:(id)params;
 - (id)initWithParams:(id)params complete:(completeBlock)callBack;
+
+#pragma mark SHOW
+
+- (void)showViewControllerWithUrLPattern:(NSString *)URLPattern;
+- (void)showViewControllerWithUrLPattern:(NSString *)URLPattern withParams:(NSDictionary *)params;
+- (void)showViewControllerWithUrLPattern:(NSString *)URLPattern withParams:(NSDictionary *)params completeReply:(completeBlock)callBack;
 
 #pragma mark PUSH
 

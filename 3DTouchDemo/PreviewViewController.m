@@ -7,12 +7,6 @@
 //
 
 #import "PreviewViewController.h"
-#import <objc/runtime.h>
-#import "DetailViewController.h"
-#import "TestTableViewCell.h"
-#import "UITableView+FDTemplateLayoutCell.h"
-#import "LKGlobalNavigationController.h"
-#import "UIViewController+WMBase.h"
 
 static char overviewKey;
 
@@ -26,7 +20,7 @@ static char overviewKey;
 @implementation PreviewViewController
 
 + (void)load {
-    [LKGlobalNavigationController registerURLPattern:@"3DTouch://preview" viewControllerClass:[self class]];
+    [LKGlobalNavigationController registerURLPattern:PREVIEW_VIEW_CONTROLLER viewControllerClass:[self class]];
 }
 
 - (void)viewDidLoad {
@@ -98,7 +92,7 @@ static char overviewKey;
     
     TestTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 
-    [self pushViewControllerWithUrLPattern:@"3DTouch://detailview" withParams:@{@"params":cell.txtLabel.text}];
+    [self pushViewControllerWithUrLPattern:DETAIL_VIEW_CONTROLLER withParams:@{@"params":cell.txtLabel.text}];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -128,12 +122,9 @@ static char overviewKey;
 
 // alternatively, use the view controller that's being provided here (viewControllerToCommit)
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    DetailViewController *detailView = [[DetailViewController alloc] init];
-    
     TestTableViewCell *cell = (TestTableViewCell *)[previewingContext sourceView];
-    detailView.params = @{@"params":cell.txtLabel.text};
-    
-    [self showViewController:detailView sender:self];
+
+    [self showViewControllerWithUrLPattern:DETAIL_VIEW_CONTROLLER withParams:@{@"params":cell.txtLabel.text}];
 }
 
 #pragma mark - Preview Actions

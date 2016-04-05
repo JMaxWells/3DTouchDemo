@@ -7,8 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "PreviewViewController.h"
-#import "LKGlobalNavigationController.h"
 
 @interface RootViewController ()<UIViewControllerPreviewingDelegate>
 
@@ -17,7 +15,7 @@
 @implementation RootViewController
 
 + (void)load {
-    [LKGlobalNavigationController registerURLPattern:@"3DTouch://rootview" viewControllerClass:[self class]];
+    [LKGlobalNavigationController registerURLPattern:ROOT_VIEW_CONTROLLER viewControllerClass:[self class]];
 }
 
 - (void)viewDidLoad {
@@ -36,11 +34,8 @@
     [self check3DTouch];
 }
 
-/**
- *  检测3DTouch是否可用
- */
+// register for 3D Touch (if available)
 - (void)check3DTouch {
-    // register for 3D Touch (if available)
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
         [self registerForPreviewingWithDelegate:(id)self sourceView:self.view];
     }
@@ -48,12 +43,8 @@
 
 # pragma mark - 3D Touch Delegate
 
+// check if we're not already displaying a preview controller
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    
-    // check if we're not already displaying a preview controller
-    /**
-     *  防止重复跳转
-     */
     if ([self.presentedViewController isKindOfClass:[PreviewViewController class]]) {
         return nil;
     }
@@ -72,11 +63,9 @@
     return previewController;
 }
 
+// alternatively, use the view controller that's being provided here (viewControllerToCommit)
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    PreviewViewController *previewController = [PreviewViewController new];
-    [self showViewController:previewController sender:self];
-    
-    // alternatively, use the view controller that's being provided here (viewControllerToCommit)
+    [self showViewControllerWithUrLPattern:PREVIEW_VIEW_CONTROLLER];
 }
 
 @end

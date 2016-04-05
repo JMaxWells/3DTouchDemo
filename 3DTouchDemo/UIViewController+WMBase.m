@@ -14,6 +14,27 @@ static char const *const completeBlockKey = "CompleteBlockKey";
 
 @implementation UIViewController (WMBase)
 
++ (void)load {
+    /**
+     *  唯一性：应该尽可能在＋load方法中实现，这样可以保证方法一定会调用且不会出现异常。
+     *  原子性：使用dispatch_once来执行方法交换，这样可以保证只运行一次。
+     */
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Method original,swizzle;
+        
+        original = class_getInstanceMethod(self, @selector(viewWillAppear:));
+        swizzle = class_getInstanceMethod(self, @selector(wmViewWillAppear:));
+        
+        method_exchangeImplementations(original, swizzle);
+    });
+}
+
+- (void)wmViewWillAppear:(BOOL)animated {
+    NSLog(@"wmViewWillAppear");
+    [self wmViewWillAppear:animated];
+}
+
 - (id)initWithParams:(id)params {
     if ([self init]) {
         self.params = params;
@@ -49,6 +70,20 @@ static char const *const completeBlockKey = "CompleteBlockKey";
 
 #pragma mark 自定义跳转方法
 
+- (void)showViewControllerWithUrLPattern:(NSString *)URLPattern {
+    [self showViewControllerWithUrLPattern:URLPattern withParams:nil];
+}
+
+- (void)showViewControllerWithUrLPattern:(NSString *)URLPattern withParams:(NSDictionary *)params {
+    [self showViewControllerWithUrLPattern:URLPattern withParams:params completeReply:nil];
+}
+
+- (void)showViewControllerWithUrLPattern:(NSString *)URLPattern withParams:(NSDictionary *)params completeReply:(completeBlock)callBack {
+    Class vcClass = [LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern];
+    UIViewController *vc = [[vcClass alloc] initWithParams:params complete:callBack];
+    [self showViewController:vc sender:self];
+}
+
 - (void)pushViewControllerWithUrLPattern:(NSString *)URLPattern {
     [self pushViewControllerWithUrLPattern:URLPattern withParams:nil];
 }
@@ -57,8 +92,7 @@ static char const *const completeBlockKey = "CompleteBlockKey";
     [self pushViewControllerWithUrLPattern:URLPattern withParams:params completeReply:nil];
 }
 
-- (void)pushViewControllerWithUrLPattern:(NSString *)URLPattern  completeReply:(completeBlock)callBack
-{
+- (void)pushViewControllerWithUrLPattern:(NSString *)URLPattern  completeReply:(completeBlock)callBack {
     [self pushViewControllerWithUrLPattern:URLPattern withParams:nil completeReply:callBack];
 }
 
@@ -68,12 +102,12 @@ static char const *const completeBlockKey = "CompleteBlockKey";
 
 - (void)pushViewControllerWithUrLPattern:(NSString *)URLPattern withParams:(NSDictionary *)params animated:(BOOL)animate completeReply:(completeBlock)callBack {
     Class vcClass = [LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern];
-    UIViewController * vc=[[vcClass alloc] initWithParams:params complete:callBack];
+    UIViewController *vc = [[vcClass alloc] initWithParams:params complete:callBack];
     [[LKGlobalNavigationController sharedInstance] pushViewController:vc animated:animate];
 }
 
 - (void)presentViewControllerWithPattern:(NSString * __nullable )URLPattern completion:(void (^)(void))completion {
-    UIViewController * vc=[[[LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern] alloc] init];
+    UIViewController *vc = [[[LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern] alloc] init];
     if (vc) {
         [self presentViewController:vc animated:YES completion:completion];
     }
@@ -120,7 +154,7 @@ static char const *const completeBlockKey = "CompleteBlockKey";
 }
 
 - (BOOL)popToViewControllerWithURLPattern:(NSString *)URLPattern animated:(BOOL)animated {
-    UIViewController * vc=  [LKGlobalNavigationController findAnExistViewControllerWithURLPattern:URLPattern];
+    UIViewController * vc = [LKGlobalNavigationController findAnExistViewControllerWithURLPattern:URLPattern];
     if (vc) {
         [[LKGlobalNavigationController sharedInstance] popToViewController:vc animated:animated];
         return YES;

@@ -7,12 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "PreviewViewController.h"
-#import "YYFPSLabel.h"
-#import <YYKit.h>
-#import <Masonry.h>
-#import "LKGlobalNavigationController.h"
-#import "UIViewController+WMBase.h"
+
 
 @interface AppDelegate ()
 
@@ -98,7 +93,7 @@
     
     if ([shortcutItem.type isEqualToString:@"com.touch.deep2"]) {
         NSLog(@"clicked deep2");
-        [[LKGlobalNavigationController sharedInstance] pushViewControllerWithUrLPattern:@"3DTouch://preview"];
+        [[LKGlobalNavigationController sharedInstance] pushViewControllerWithUrLPattern:PREVIEW_VIEW_CONTROLLER];
     }
     
     if ([shortcutItem.type isEqualToString:@"com.touch.deep3"]) {

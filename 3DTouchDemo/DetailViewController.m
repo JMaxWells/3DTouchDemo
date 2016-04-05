@@ -7,11 +7,6 @@
 //
 
 #import "DetailViewController.h"
-#import <Masonry.h>
-#import <YYTextView.h>
-#import "LKGlobalNavigationController.h"
-#import "UIViewController+WMBase.h"
-#import <MMPlaceHolder.h>
 
 @interface DetailViewController ()
 
@@ -22,7 +17,7 @@
 @implementation DetailViewController
 
 + (void)load {
-    [LKGlobalNavigationController registerURLPattern:@"3DTouch://detailview" viewControllerClass:[self class]];
+    [LKGlobalNavigationController registerURLPattern:DETAIL_VIEW_CONTROLLER viewControllerClass:[self class]];
 }
 
 - (void)viewDidLoad {

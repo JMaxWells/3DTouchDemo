@@ -19,6 +19,8 @@
     self.window.alpha = 1.0f;
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [NSThread sleepForTimeInterval:1.0];
+    
     RootViewController *vc = [RootViewController  new];
     LKGlobalNavigationController *nvc = [[LKGlobalNavigationController sharedInstance] initWithRootViewController:vc];
     UIBarButtonItem *leftItem = nvc.navigationItem.backBarButtonItem;
@@ -40,6 +42,17 @@
     self.window.rootViewController = nvc;
     [self.window makeKeyWindow];
     
+    /**
+     *  初始化SDK
+     *
+     */
+    [[ALBBSDK sharedInstance] asyncInit:^{
+        
+                        }
+                        failedCallback:^(NSError *error) {
+                            NSLog(@"TaeSDK init failed!!!");
+                        }];
+
     /**
      *  如果系统大于9 才使用3DTouch
      */

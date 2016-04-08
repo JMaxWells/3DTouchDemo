@@ -24,15 +24,15 @@ static char const *const completeBlockKey = "CompleteBlockKey";
         Method original,swizzle;
         
         original = class_getInstanceMethod(self, @selector(viewWillAppear:));
-        swizzle = class_getInstanceMethod(self, @selector(wmViewWillAppear:));
+        swizzle = class_getInstanceMethod(self, @selector(swizzle_viewWillAppear:));
         
         method_exchangeImplementations(original, swizzle);
     });
 }
 
-- (void)wmViewWillAppear:(BOOL)animated {
-    NSLog(@"wmViewWillAppear");
-    [self wmViewWillAppear:animated];
+- (void)swizzle_viewWillAppear:(BOOL)animated {
+    NSLog(@"swizzle_viewWillAppear");
+    [self swizzle_viewWillAppear:animated];
 }
 
 - (id)initWithParams:(id)params {
@@ -106,7 +106,7 @@ static char const *const completeBlockKey = "CompleteBlockKey";
     [[LKGlobalNavigationController sharedInstance] pushViewController:vc animated:animate];
 }
 
-- (void)presentViewControllerWithPattern:(NSString * __nullable )URLPattern completion:(void (^)(void))completion {
+- (void)presentViewControllerWithPattern:(NSString * __nullable)URLPattern completion:(void (^)(void))completion {
     UIViewController *vc = [[[LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern] alloc] init];
     if (vc) {
         [self presentViewController:vc animated:YES completion:completion];
@@ -117,7 +117,7 @@ static char const *const completeBlockKey = "CompleteBlockKey";
 
 - (void)presentViewControllerWithPattern:(NSString *)URLPattern withParams:(NSDictionary * __nullable)params completion:(void (^)(void))completion{
     Class vcClass = [LKGlobalNavigationController findViewControllerClassWithURLPattern:URLPattern];
-    UIViewController *vc = [[vcClass alloc]initWithParams:params];
+    UIViewController *vc = [[vcClass alloc] initWithParams:params];
     if (vc) {
         [self presentViewController:vc animated:YES completion:completion];
     }
@@ -154,7 +154,7 @@ static char const *const completeBlockKey = "CompleteBlockKey";
 }
 
 - (BOOL)popToViewControllerWithURLPattern:(NSString *)URLPattern animated:(BOOL)animated {
-    UIViewController * vc = [LKGlobalNavigationController findAnExistViewControllerWithURLPattern:URLPattern];
+    UIViewController *vc = [LKGlobalNavigationController findAnExistViewControllerWithURLPattern:URLPattern];
     if (vc) {
         [[LKGlobalNavigationController sharedInstance] popToViewController:vc animated:animated];
         return YES;

@@ -1,0 +1,11 @@
+{
+    "music": [{
+        "resourceUrl": "music/Athena",
+        "id": 1,
+        "name": "Athena"
+    }, {
+        "resourceUrl": "music/Box Clever",
+        "id": 2,
+        "name": "Box Clever"
+    }],
+}

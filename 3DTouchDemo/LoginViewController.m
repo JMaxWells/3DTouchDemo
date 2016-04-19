@@ -38,7 +38,7 @@
     
     
     NSString *urlStr = [[NSBundle mainBundle]pathForResource:@"1.mp4" ofType:nil];
-     NSURL *url = [NSURL fileURLWithPath:urlStr];
+    NSURL *url = [NSURL fileURLWithPath:urlStr];
     
     _moviePlayer = [[MPMoviePlayerController alloc]initWithContentURL:url];
     //    _moviePlayer.controlStyle = MPMovieControlStyleDefault;
@@ -137,57 +137,24 @@
         make.bottom.mas_equalTo(@-20);
     }];
     
-    UILabel *label_1 = [[UILabel alloc] initWithFrame:CGRectZero];
-    label_1.textColor = [UIColor whiteColor];
-    label_1.text = @"每个动作都精确规范";
-    label_1.textAlignment = NSTextAlignmentCenter;
-    [self.scrollView addSubview:label_1];
+    NSArray *sologn = @[@"每个动作都精确规范", @"规划陪伴你的训练过程", @"分享汗水后你的性感", @"全程记录你的健身数据"];
     
-    [label_1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(20);
-        make.left.mas_equalTo(0);
-        make.width.mas_equalTo(SCREEN_WIDTH);
-        make.bottom.equalTo(self.pageControl.mas_top).equalTo(@-10);
-    }];
-    
-    UILabel *label_2 = [[UILabel alloc] initWithFrame:CGRectZero];
-    label_2.textColor = [UIColor whiteColor];
-    label_2.text = @"规划陪伴你的训练过程";
-    label_2.textAlignment = NSTextAlignmentCenter;
-    [self.scrollView addSubview:label_2];
-    
-    [label_2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(20);
-        make.left.mas_equalTo(label_1.mas_right);
-        make.width.mas_equalTo(SCREEN_WIDTH);
-        make.bottom.equalTo(self.pageControl.mas_top).equalTo(@-10);
-    }];
-    
-    UILabel *label_3 = [[UILabel alloc] initWithFrame:CGRectZero];
-    label_3.textColor = [UIColor whiteColor];
-    label_3.text = @"分享汗水后你的性感";
-    label_3.textAlignment = NSTextAlignmentCenter;
-    [self.scrollView addSubview:label_3];
-    
-    [label_3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(20);
-        make.left.mas_equalTo(label_2.mas_right);
-        make.width.mas_equalTo(SCREEN_WIDTH);
-        make.bottom.equalTo(self.pageControl.mas_top).equalTo(@-10);
-    }];
-    
-    UILabel *label_4 = [[UILabel alloc] initWithFrame:CGRectZero];
-    label_4.textColor = [UIColor whiteColor];
-    label_4.text = @"全程记录你的健身数据";
-    label_4.textAlignment = NSTextAlignmentCenter;
-    [self.scrollView addSubview:label_4];
-    
-    [label_4 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(20);
-        make.left.mas_equalTo(label_3.mas_right);
-        make.width.mas_equalTo(SCREEN_WIDTH);
-        make.bottom.equalTo(self.pageControl.mas_top).equalTo(@-10);
-    }];
+    for (int i = 0; i<sologn.count; i++) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.textColor = [UIColor whiteColor];
+        label.text = sologn[i];
+        label.font = [UIFont systemFontOfSize:22.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        [self.scrollView addSubview:label];
+        
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(20);
+            make.left.mas_equalTo(i*SCREEN_WIDTH);
+            make.width.mas_equalTo(SCREEN_WIDTH);
+            make.bottom.equalTo(self.pageControl.mas_top).equalTo(@-10);
+        }];
+    }
+ 
     
     UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"keep6plus@3x"]];
     [self.view addSubview:logo];
@@ -293,7 +260,7 @@
     [self setupTimer];
 }
 
--(void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     if (_timer) {
         [_timer invalidate];
         _timer = nil;

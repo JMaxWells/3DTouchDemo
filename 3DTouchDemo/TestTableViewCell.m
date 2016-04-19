@@ -7,7 +7,6 @@
 //
 
 #import "TestTableViewCell.h"
-#import "Masonry.h"
 
 @implementation TestTableViewCell
 

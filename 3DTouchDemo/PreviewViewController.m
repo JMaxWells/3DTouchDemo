@@ -81,8 +81,10 @@ static char overviewKey;
     cell.fd_enforceFrameLayout = NO;
 
     cell.entity = self.titleArray[indexPath.row%10];
-
-    [self registerForPreviewingWithDelegate:self sourceView:cell];
+    
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+        [self registerForPreviewingWithDelegate:self sourceView:cell];
+    }
     
     return cell;
 }

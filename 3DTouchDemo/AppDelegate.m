@@ -40,7 +40,7 @@
     }];
     
     self.window.rootViewController = nvc;
-    [self.window makeKeyWindow];
+    [self.window makeKeyAndVisible];
     
     /**
      *  初始化SDK

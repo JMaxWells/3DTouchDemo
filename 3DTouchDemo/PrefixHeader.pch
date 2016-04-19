@@ -32,11 +32,14 @@
 #import <MMPlaceHolder.h>
 #import <YYKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <AVFoundation/AVFoundation.h>
 #import <ALBBSDK/ALBBSDK.h>
 #import <ALBBQuPai/QPEffectMusic.h>
 #import <ALBBQuPai/ALBBQuPaiService.h>
 #import <ALBBSDK/TaeSDK.h>
-
+#import <CoreMedia/CoreMedia.h>
+#import <UIKit/UIKit.h>
+#import <AVFoundation/AVPlayer.h>
+#import <AVFoundation/AVPlayerLayer.h>
+#import <AVFoundation/AVFoundation.h>
 
 #endif /* PrefixHeader_pch */

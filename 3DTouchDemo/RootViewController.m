@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 
-@interface RootViewController ()<UIViewControllerPreviewingDelegate,UIActionSheetDelegate> {
+@interface RootViewController ()<UIViewControllerPreviewingDelegate> {
     BOOL _down;
 }
 
@@ -68,8 +68,48 @@
 }
 
 - (void)cameraAction:(UIButton *)sender {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择拍摄方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"趣拍",@"EasyVideo", nil];
-    [sheet showInView:self.view];
+    id<ALBBQuPaiService> sdk = [[ALBBSDK sharedInstance] getService:@protocol(ALBBQuPaiService)];
+    [sdk setDelegte:(id<QupaiSDKDelegate>)self];
+    
+    /* 可选设置 */
+    
+    /* 是否开启导入 */
+    [sdk setEnableImport:YES];
+    /* 是否添加更多音乐按钮 */
+    [sdk setEnableMoreMusic:YES];
+    /* 是否开启美颜切换 */
+    [sdk setEnableBeauty:YES];
+    /* 是否开启视频编辑页面 */
+    [sdk setEnableVideoEffect:YES];
+    /* 是否开启水印图片 */
+    [sdk setEnableWatermark:YES];
+    [sdk setTintColor:[UIColor colorWithRed:0.351  green:0.788  blue:0.986 alpha:1]];
+    /* 首帧图图片质量:压缩质量 0-1 */
+    [sdk setThumbnailCompressionQuality:1.0f];
+    /* 水印图片 */
+    [sdk setWatermarkImage:[UIImage imageNamed:@"watermask"]];
+    /* 水印图片位置 */
+    [sdk setWatermarkPosition:QupaiSDKWatermarkPositionTopRight];
+    /* 默认摄像头位置，only Back or Front */
+    [sdk setCameraPosition:QupaiSDKCameraPositionBack];
+    
+    /* 基本设置 */
+    
+    /**
+     *创建录制页面，需要以 UINavigationController 为父容器
+     * @param minDuration 允许拍摄的最小时长
+     * @param maxDuration 允许拍摄的最大时长
+     * @param bitRate 视频码率，建议800*1000-5000*1000,码率越大，视频越清析，视频文件也会越大。参考：8秒的视频以2000*1000的码率压缩，文件大小1.5M-2M。请开发者根据自己的业务场景设置时长和码率
+     */
+    UIViewController *recordController = [sdk createRecordViewControllerWithMinDuration:2
+                                                                            maxDuration:10
+                                                                                bitRate:2000*1000];
+    
+    recordController.view.backgroundColor = [UIColor colorWithRed:0.144  green:0.172  blue:0.242 alpha:1];
+    
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:recordController];
+    navigation.navigationBarHidden = YES;
+    [self presentViewController:navigation animated:YES completion:nil];
 }
 
 - (void)loginAction:(UIButton *)sender {
@@ -85,52 +125,7 @@
     }
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        id<ALBBQuPaiService> sdk = [[ALBBSDK sharedInstance] getService:@protocol(ALBBQuPaiService)];
-        [sdk setDelegte:(id<QupaiSDKDelegate>)self];
-        
-        /* 可选设置 */
-        
-        /* 是否开启导入 */
-        [sdk setEnableImport:YES];
-        /* 是否添加更多音乐按钮 */
-        [sdk setEnableMoreMusic:YES];
-        /* 是否开启美颜切换 */
-        [sdk setEnableBeauty:YES];
-        /* 是否开启视频编辑页面 */
-        [sdk setEnableVideoEffect:YES];
-        /* 是否开启水印图片 */
-        [sdk setEnableWatermark:YES];
-        [sdk setTintColor:[UIColor colorWithRed:0.351  green:0.788  blue:0.986 alpha:1]];
-        /* 首帧图图片质量:压缩质量 0-1 */
-        [sdk setThumbnailCompressionQuality:1.0f];
-        /* 水印图片 */
-        [sdk setWatermarkImage:[UIImage imageNamed:@"watermask"]];
-        /* 水印图片位置 */
-        [sdk setWatermarkPosition:QupaiSDKWatermarkPositionTopRight];
-        /* 默认摄像头位置，only Back or Front */
-        [sdk setCameraPosition:QupaiSDKCameraPositionBack];
-        
-        /* 基本设置 */
-        
-        /**
-         *创建录制页面，需要以 UINavigationController 为父容器
-         * @param minDuration 允许拍摄的最小时长
-         * @param maxDuration 允许拍摄的最大时长
-         * @param bitRate 视频码率，建议800*1000-5000*1000,码率越大，视频越清析，视频文件也会越大。参考：8秒的视频以2000*1000的码率压缩，文件大小1.5M-2M。请开发者根据自己的业务场景设置时长和码率
-         */
-        UIViewController *recordController = [sdk createRecordViewControllerWithMinDuration:2
-                                                                                maxDuration:10
-                                                                                    bitRate:2000*1000];
-        
-        recordController.view.backgroundColor = [UIColor colorWithRed:0.144  green:0.172  blue:0.242 alpha:1];
-        
-        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:recordController];
-        navigation.navigationBarHidden = YES;
-        [self presentViewController:navigation animated:YES completion:nil];
-    }
-}
+
 
 - (void)qupaiSDK:(id<ALBBQuPaiService>)sdk compeleteVideoPath:(NSString *)videoPath thumbnailPath:(NSString *)thumbnailPath
 {

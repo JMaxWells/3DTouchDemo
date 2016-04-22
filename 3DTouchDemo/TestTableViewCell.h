@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YYKit.h>
 
 @interface TestTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *txtLabel;
+@property (nonatomic, strong) YYLabel *txtLabel;
 @property (nonatomic, strong) NSString *entity;
 
 @end
